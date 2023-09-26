@@ -1,8 +1,8 @@
 import { afterRender, Component, inject, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AlertController, IonicModule, ModalController } from '@ionic/angular';
-import { User, UsersService } from '../../../services/users.service';
 import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
+import {User} from "../../../services/users.service";
 
 @Component({
   selector: 'app-user-list',

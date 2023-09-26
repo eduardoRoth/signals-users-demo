@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "utahjs-signals": {
+    "signals-users-demo": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -17,12 +17,10 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/utahjs-signals",
+            "outputPath": "dist/signals-users-demo",
             "index": "src/index.html",
             "main": "src/main.ts",
-            "polyfills": [
-              "zone.js"
-            ],
+            "polyfills": ["zone.js"],
             "tsConfig": "tsconfig.app.json",
             "inlineStyleLanguage": "scss",
             "assets": [
@@ -103,10 +101,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "utahjs-signals:build:production"
+              "browserTarget": "signals-users-demo:build:production"
             },
             "development": {
-              "browserTarget": "utahjs-signals:build:development"
+              "browserTarget": "signals-users-demo:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -114,16 +112,13 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "utahjs-signals:build"
+            "browserTarget": "signals-users-demo:build"
           }
         },
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "polyfills": [
-              "zone.js",
-              "zone.js/testing"
-            ],
+            "polyfills": ["zone.js", "zone.js/testing"],
             "tsConfig": "tsconfig.spec.json",
             "inlineStyleLanguage": "scss",
             "assets": [
@@ -135,33 +130,31 @@
                 "output": "./svg"
               }
             ],
-            "styles": [
-              "src/styles.scss"
-            ],
+            "styles": ["src/styles.scss"],
             "scripts": []
           }
         },
         "ionic-cordova-serve": {
           "builder": "@ionic/angular-toolkit:cordova-serve",
           "options": {
-            "cordovaBuildTarget": "utahjs-signals:ionic-cordova-build",
-            "devServerTarget": "utahjs-signals:serve"
+            "cordovaBuildTarget": "signals-users-demo:ionic-cordova-build",
+            "devServerTarget": "signals-users-demo:serve"
           },
           "configurations": {
             "production": {
-              "cordovaBuildTarget": "utahjs-signals:ionic-cordova-build:production",
-              "devServerTarget": "utahjs-signals:serve:production"
+              "cordovaBuildTarget": "signals-users-demo:ionic-cordova-build:production",
+              "devServerTarget": "signals-users-demo:serve:production"
             }
           }
         },
         "ionic-cordova-build": {
           "builder": "@ionic/angular-toolkit:cordova-build",
           "options": {
-            "browserTarget": "utahjs-signals:build"
+            "browserTarget": "signals-users-demo:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "utahjs-signals:build:production"
+              "browserTarget": "signals-users-demo:build:production"
             }
           }
         }
