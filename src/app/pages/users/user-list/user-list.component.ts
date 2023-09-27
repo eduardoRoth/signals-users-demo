@@ -2,7 +2,7 @@ import { afterRender, Component, inject, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AlertController, IonicModule, ModalController } from '@ionic/angular';
 import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
-import {User} from "../../../services/users.service";
+import { User, UsersService } from '../../../services/users.service';
 
 @Component({
   selector: 'app-user-list',
@@ -16,7 +16,7 @@ export default class UserListComponent {
   private _modalCtrl = inject(ModalController);
   private _alertCtrl = inject(AlertController);
   private _fb = inject(FormBuilder);
-
+  readonly usersService = inject(UsersService);
   readonly userForm = this._fb.group({
     firstName: [''],
     lastName: [''],
@@ -24,21 +24,21 @@ export default class UserListComponent {
     isFavorite: [false],
   });
 
-  users = signal<User[]>([]); //this.usersService.users;
+  users = this.usersService.users;
 
   async dismiss() {
     await this._modalCtrl.dismiss();
   }
 
   async save() {
-    // this.usersService.addUser(this.userForm.value as User);
+    this.usersService.addUser(this.userForm.value as User);
     await this._modalCtrl.dismiss();
     this.userForm.reset();
   }
 
   async toggleFavorite(user: User) {
     user.isFavorite = !user.isFavorite;
-    // this.usersService.updateUser(user);
+    this.usersService.updateUser(user);
   }
 
   async removeUser(user: User) {
@@ -55,7 +55,7 @@ export default class UserListComponent {
             text: 'Yes',
             role: 'destructive',
             handler: () => {
-              // this.usersService.removeUser(user);
+              this.usersService.removeUser(user);
             },
           },
         ],
